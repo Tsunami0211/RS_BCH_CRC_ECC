@@ -1,0 +1,37 @@
+# CRC 配置
+crc:
+  enabled: true               # 是否启用 CRC 模块
+  data_unit: bit              # 操作单位：bit
+  data_size: 1024             # 数据大小（以 bit 为单位，具体根据需求定义）
+  polynomial: "0x1021"        # CRC 生成多项式（例如 CRC-CCITT）
+  initial_value: "0xFFFF"     # 初始值
+  final_xor: "0x0000"         # 最终异或值
+
+# RS 配置
+rs:
+  enabled: true               # 是否启用 RS 模块
+  data_unit: byte             # 操作单位：byte
+  data_size: 256              # 数据大小（字节数）
+  redundancy: 16              # 冗余字节数（用于纠错）
+  primitive_polynomial: "0x11D"  # 本原多项式（例如 GF(2^8) 使用的多项式）
+  generator_polynomial: "..."   # 生成多项式（根据需要填写具体内容）
+
+# BCH 配置
+bch:
+  enabled: true               # 是否启用 BCH 模块
+  data_unit: symbol           # 操作单位：symbol（GF(2^n) 中的 symbol）
+  symbol_size: 4              # 每个 symbol 的大小（单位：bit，例如 GF(2^4)）
+  redundancy: 5               # 冗余程度（纠错能力）
+  primitive_polynomial: "0x1D" # 本原多项式（示例值）
+  generator_polynomial: "GEN_POLY"  # 生成多项式（根据 bchlib 要求填写）
+
+# 报告和统计配置
+report:
+  generate_charts: true       # 是否生成图表
+  output_file: "report.pdf"     # 输出报告文件名称
+
+# 错误注入配置（可根据需要扩展其它错误类型）
+error_injection:
+  single_bit_flip: true       # 启用单比特反转错误注入
+  double_bit_flip: false      # 启用双比特反转错误注入
+
